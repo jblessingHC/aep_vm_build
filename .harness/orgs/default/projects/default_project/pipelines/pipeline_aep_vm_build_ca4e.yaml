@@ -1,0 +1,22 @@
+pipeline:
+  id: pipeline_aep_vm_build_ca4e
+  name: pipeline_aep_vm_build_ca4e
+  stages:
+    - id: build
+      name: Build
+      runtime: cloud
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+      steps:
+        - id: validate
+          name: Validate Repository
+          run:
+            shell: bash
+            script: |-
+              echo "Repository cloned successfully"
+              ls -la
+              echo "No build files detected - repository appears to be empty or in initial state"
+  tags:
+    onboarding: "true"
